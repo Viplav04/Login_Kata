@@ -5,6 +5,7 @@
  
  TODO:
  1. Function Documentation
- 2. Testing with DOM Elements/Unit Testing
- 3. Style changes
- 4. Exception handling
+ 2. Password Encryption
+ 3. Testing with DOM Elements/Unit Testing
+ 4. Style changes
+ 5. Exception handling
