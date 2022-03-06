@@ -1,0 +1,24 @@
+﻿@using Login_Kata_Blazor.Data
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+
+
+<div class="main">
+    <div class="top-row px-4">      
+                <a href="/" >Logout</a>
+
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
+@code{
+   /* public async Task Logout()
+    {
+        //await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsLoggedOut();
+        NavigationManager.NavigateTo("");
+    }*/
+}

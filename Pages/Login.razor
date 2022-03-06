@@ -1,0 +1,95 @@
+﻿@using Login_Kata_Blazor.Data;
+@layout LoginLayout;
+@inject NavigationManager NavigationManager;
+@inject ILogin login;
+@inject IRegistration registration;
+@page "/"
+<PageTitle>Yoga Center</PageTitle>
+
+<center>
+    <div class="col-8">
+        <div class="col-12 row">
+            <p>&nbsp;</p>
+        </div>
+        <div class="col-12 row">
+            <div class="col-6" style="border-right:groove">
+                <img src="/img/background_image.png" width="600px" height="400px" />
+            </div>
+            <div class="col-6" style="border-left:groove">
+                <EditForm Model="@user" OnValidSubmit="@ValidateUser">
+                    <div>
+                        <br /><br /><br /><br /><br />
+                    </div>
+                    <div>
+                        <h3 style="font-weight:bold; color:purple">Yoga Center Login</h3>
+                    </div>
+                    <div>
+                        <br />
+                    </div>
+                    @if(IsLogin){
+                        <div class="col-12 row">
+                            <input class="form-control col-12" @bind="user.Nickname" placeholder="UserId" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <input type="password" class="form-control col-12" @bind="user.Id" placeholder="password" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <span class="col-12"></span>
+                            <input type="submit" class="form-control col-6 btn btn-primary" value="Login" />
+                        </div>
+                        <br />
+                        <div class="col-12 row" style="text-align:left; font-weight:bold">
+                            <span class="col-12">@LoginMessage</span>
+                        </div>
+                    }
+                    else{
+                        <div class="col-12 row">
+                            <input class="form-control col-12" @bind="user.Email" placeholder="Email" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <input type="password" class="form-control col-12" @bind="user.Id" placeholder="password" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <input type="password" class="form-control col-12" @bind="user.AccessToken" placeholder="Confirm Password" />
+                        </div>
+                        <br />
+                        <div class="col-12 row">
+                            <span class="col-12"></span>
+                            <input type="submit" class="form-control col-6 btn btn-primary" value="Sign Up" />
+                        </div>
+                        <br />
+                        <div class="col-12 row" style="text-align:left; font-weight:bold">
+                            <span class="col-12">@LoginMessage</span>
+                        </div>
+                    }
+                    
+                </EditForm>
+            </div>
+        </div>
+        <div class="col-12 row">
+            <p>&nbsp;</p>
+        </div>
+    </div>
+</center>
+
+
+@code {
+
+    private User user;
+    public string LoginMessage { get; set; }
+
+    private bool IsLogin = true;
+
+    protected override void OnInitialized(){
+        user = new User();
+    }
+     private async Task<bool> ValidateUser()
+    {
+        
+        return await Task.FromResult(true);
+    }
+}
